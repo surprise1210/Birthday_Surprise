@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Surprise ✨</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <audio id="bgMusic" loop>
+      <source src="birthday-song.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div id="introScreen" class="intro-screen">
+      <div class="audio-trigger-hint">👆Tap Anywhere to Start✨</div>
+      <div class="countdown-wrapper">
+        <svg class="progress-ring" width="200" height="200">
+          <circle
+            class="progress-ring__circle"
+            stroke="url(#neonGradient)"
+            stroke-width="6"
+            fill="transparent"
+            r="90"
+            cx="100"
+            cy="100"
+            stroke-dasharray="565.48"
+            stroke-dashoffset="0"
+          />
+          <defs>
+            <linearGradient
+              id="neonGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="#ff0055" />
+              <stop offset="100%" stop-color="#00ffff" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div id="countdownNumber" class="countdown-number">10</div>
+      </div>
+      <p class="curiosity-text">Something magical is loading for you...</p>
+    </div>
+
+    <div id="floating-hearts-container"></div>
+
+    <div class="container hidden" id="mainContainer">
+      <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+      </div>
+
+      <div class="step" id="step1">
+        <div class="diwali-wire-frame" id="diwaliWireFrame"></div>
+        <h1>Happy Birthday 🎂</h1>
+        <p class="subtext">Make a wish and turn on the power ✨</p>
+
+        <div class="birthday-stage">
+          <div class="fan-wrapper-left">
+            <div class="table-fan-3d" id="tableFan">
+              <div class="fan-head-3d">
+                <div class="fan-blades-3d" id="fanBlades"></div>
+                <div class="fan-grill-3d"></div>
+              </div>
+              <div class="fan-stand-3d"></div>
+              <div class="fan-base-3d"></div>
+            </div>
+          </div>
+
+          <div class="wind-container" id="windContainer"></div>
+
+          <div class="cake-wrapper-center">
+            <div class="cake">
+              <img src="cake.png" class="real-cake" alt="Cake Base" />
+              <div class="number-candle">
+                <div class="num num2">
+                  2
+                  <div class="flame-wrapper">
+                    <div class="flame-blue"></div>
+                    <div class="flame flame2"></div>
+                  </div>
+                  <div class="smoke-container" id="smoke2"></div>
+                </div>
+                <div class="num num0">
+                  0
+                  <div class="flame-wrapper">
+                    <div class="flame-blue"></div>
+                    <div class="flame flame0"></div>
+                  </div>
+                  <div class="smoke-container" id="smoke0"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="switch-wrapper-right">
+            <div class="switch-board-3d">
+              <div
+                class="switch-toggle"
+                id="fanSwitch"
+                onclick="turnOnFanSystem()"
+              >
+                <div class="switch-knob"></div>
+              </div>
+              <span class="switch-label">POWER OFF</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="blow-text" id="fanHint">
+          Switch ON the fan to blow candles 🔌
+        </p>
+
+        <div class="fixed-action-footer">
+          <button class="btn hidden-btn" id="startBtn" onclick="nextStep()">
+            Continue 🎁
+          </button>
+        </div>
+      </div>
+
+      <div class="step" id="step2">
+        <h2>Upload a beautiful photo 📸</h2>
+        <p class="subtext" style="margin-top: 15px; margin-bottom: 12px">
+          Aapki ek pyaari si picture jo is surprise ko complete karegi...
+        </p>
+
+        <div class="unique-upload-box">
+          <label for="photoInput" class="upload-trigger">
+            <span class="upload-icon">📸</span>
+            <span id="uploadStatusText">Choose or Drop Photo</span>
+          </label>
+          <input
+            type="file"
+            id="photoInput"
+            accept="image/*"
+            class="hidden-file-input"
+          />
+        </div>
+
+        <div class="fixed-action-footer visible-footer">
+          <button class="btn" onclick="saveName()">Continue ✨</button>
+        </div>
+      </div>
+
+      <div class="step" id="step3">
+        <h2 id="welcomeText">For You 💖</h2>
+        <div class="photo-wrapper">
+          <img id="uploadedPhoto" class="photo-rect" alt="Uploaded Profile" />
+        </div>
+        <div class="heart" id="heart"></div>
+        <div class="message-box" id="heartMessage">Tap the heart 💖</div>
+
+        <div class="fixed-action-footer">
+          <button class="btn hidden-btn" id="heartBtn" onclick="nextStep()">
+            Continue✨
+          </button>
+        </div>
+      </div>
+
+      <div class="step" id="step4">
+        <h2>Special Message 💌</h2>
+        <div class="glass-box-full">
+          <p id="typingText"></p>
+        </div>
+        <div class="fixed-action-footer visible-footer">
+          <button
+            class="btn"
+            id="msgContinueBtn"
+            onclick="activateSpinScreenOnly()"
+          >
+            Next 🫣
+          </button>
+        </div>
+      </div>
+
+      <div id="suhaniSpinStep" class="step spin-game-step hidden-step">
+        <h2 class="spin-game-title">🎰 Suhani's Premium Diagnostics</h2>
+        <p class="spin-game-subtext">
+          Spin until you hit the perfect matching premium combination!
+        </p>
+
+        <div class="slots-premium-grid">
+          <div class="slot-box-premium"><span id="trait1">🌟</span></div>
+          <div class="slot-box-premium"><span id="trait2">✨</span></div>
+          <div class="slot-box-premium"><span id="trait3">🌸</span></div>
+        </div>
+
+        <button
+          id="spinActionBtn"
+          class="spin-btn-trigger"
+          onclick="triggerSuhaniSpin()"
+        >
+          Spin Trait Reels🚀
+        </button>
+
+        <button
+          id="spinNextBtn"
+          class="spin-btn-next"
+          onclick="goToNextScreenAfterSpin()"
+        >
+          Open Future Capsule 📜
+        </button>
+      </div>
+
+      <div id="friendshipWishStep" class="step wish-capsule-step hidden-step">
+        <h2 class="wish-capsule-title">📌 Our Friendship Future Wish-List</h2>
+        <p class="wish-capsule-subtext">
+          Some pending treats, hypothetical trips, and silent promises!
+        </p>
+
+        <div class="wish-checklist">
+          <div class="wish-item">
+            <input type="checkbox" id="wish1" checked disabled />
+            <label for="wish1">Become Friends Forever🤝(Done!)</label>
+          </div>
+          <div class="wish-item">
+            <input type="checkbox" id="wish2" onclick="toggleWishMessage(2)" />
+            <label for="wish2"
+              >Execution of the 'Always Cancelled' Road Trip 🚗</label
+            >
+          </div>
+          <div class="wish-item">
+            <input type="checkbox" id="wish3" onclick="toggleWishMessage(3)" />
+            <label for="wish3">Suhani's Grand Pending Treat/Party 🍕</label>
+          </div>
+        </div>
+
+        <div class="wish-dynamic-board">
+          <p id="wishBoardText">
+            Check the boxes above to lock our future goals! ✨
+          </p>
+        </div>
+
+        <div class="promise-capsule-box">
+          <button
+            id="promiseBtn"
+            class="btn-promise-trigger"
+            onclick="triggerPinkyPromise()"
+          >
+            Click to Make a Silent Promise 🤝
+          </button>
+          <p id="promiseStatusText" class="promise-hidden-text">
+            "No matter how busy life gets, college/jobs shift us, we will never
+            lose this pure bond."
+          </p>
+        </div>
+
+        <button
+          id="wishNextBtn"
+          class="wish-btn-next"
+          onclick="goToMemoriesFromWishlist()"
+        >
+          Unlock Memories Archive 📸
+        </button>
+      </div>
+
+      <div class="step" id="step5">
+        <h2>Beautiful Memories ✨</h2>
+        <div class="memory-container">
+          <div class="polaroid">
+            <img src="memory_2.jpeg" alt="Memory 1" />
+            <div class="polaroid-pin"></div>
+          </div>
+          <div class="polaroid">
+            <img src="memory_5.png" alt="Memory 2" />
+            <div class="polaroid-pin"></div>
+          </div>
+          <div class="polaroid">
+            <img src="memory_3.jpeg" alt="Memory 3" />
+            <div class="polaroid-pin"></div>
+          </div>
+          <div class="polaroid">
+            <img src="memory_1.jpeg" alt="Memory 4" />
+            <div class="polaroid-pin"></div>
+          </div>
+          <div class="polaroid">
+            <img src="memory_6.png" alt="Memory 5" />
+            <div class="polaroid-pin"></div>
+          </div>
+          <div class="polaroid">
+            <img src="memory_4.jpeg" alt="Memory 6" />
+            <div class="polaroid-pin"></div>
+          </div>
+        </div>
+        <div class="fixed-action-footer visible-footer">
+          <button class="btn" onclick="nextStep()">Open Letter 💌</button>
+        </div>
+      </div>
+
+      <div class="step" id="step6">
+        <h2>Royal Letter📜</h2>
+        <div class="center-hint-wrapper">
+          <p class="scroll-hint-text-royal" id="scrollHint">
+            shahi farmaan khul chuka hai📜
+          </p>
+        </div>
+
+        <div class="royal-scroll-container" onclick="unfoldScroll()">
+          <div class="scroll-roller top-roller"></div>
+          <div class="scroll-paper" id="royalPaper">
+            <div class="scroll-content">
+              <h3>Dear Mahila-Mitra💖</h3>
+              <p>
+                Happy Birthday 🎂✨aap officially aur ek saal or zyada pagal ho
+                gayi😂 Lekin sach me... thank you for being one of the sweetest
+                people🌸 Mood swings, random fights, overthinking, sab tolerate
+                karne ke liye medal milna chahiye aapko always available ke liye
+                bhi😭🏅 Aapke jaisa dost milna easy nhi hota. isliye chahte hai
+                ki aap humesha smile karti raho, stress kam liya karo or life
+                aapko utna hi happiness de jitna aap dusro ko happiness dete ho,
+                Khud ka dhyaan rakha kajiye samjheeeee 😤pani piya karo jyaga
+                jisse body relax lagega 🥤Time pe khana khaya karo jisse body me
+                energy rhegi🍕 Stay happy always dear Mahila-Mitra💖✨
+              </p>
+            </div>
+          </div>
+          <div class="scroll-roller bottom-roller"></div>
+        </div>
+        <div class="fixed-action-footer visible-footer">
+          <button class="btn" onclick="nextStep()">Final Surprise 🎆</button>
+        </div>
+      </div>
+
+      <div class="step" id="step7">
+        <h1>Happy Birthday <span id="finalName"></span> 🎉</h1>
+        <div class="photo-wrapper">
+          <img id="finalPhoto" class="photo-rect" alt="Celebrant Portrait" />
+        </div>
+        <h2 class="glow" style="margin-bottom: 25px">Stay Happy Always ✨</h2>
+
+        <div class="fixed-action-footer visible-footer">
+          <button class="btn thank-you-btn" onclick="closeEntireWebsite()">
+            Thank You 💖
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="hintBox" class="hint-toast"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
