@@ -868,3 +868,32 @@ svg[class*="progress"] {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
 }
+
+/* ==========================================
+   SPIN GAME MOBILE TEXT FIX
+   ========================================== */
+@media (max-width: 600px) {
+  /* Slots ke grid ka gap mobile me thoda kam karne ke liye */
+  .slots-premium-grid {
+    gap: 8px !important;
+    padding: 0 5px !important;
+  }
+
+  /* Slot box ki height aur padding mobile ke mutabik scale karne ke liye */
+  .slot-box-premium {
+    height: 80px !important; /* Mobile me height thodi kam taaki fit baithe */
+    padding: 5px !important;
+    border-width: 2px !important; /* Border thoda patla */
+  }
+
+  /* 💡 Sabse zaroori: Slot ke andar ka text chhota aur proper wrap karne ke liye */
+  .slot-box-premium span {
+    font-size: 13px !important;      /* Font size chhota kiya taaki pura text aaye */
+    line-height: 1.2 !important;     /* Lines ke beech ka gap set kiya */
+    word-break: break-word !important; /* Agar bada word ho toh toot kar niche aa jaye */
+    white-space: normal !important;   /* Text ko ek hi line me stretch hone se rokega */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
