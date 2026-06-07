@@ -804,3 +804,67 @@ svg[class*="progress"] {
   pointer-events: none; /* Taaki clicks block na ho */
   box-shadow: 0 0 8px #fff, 0 0 15px #fffa65; /* Default soft glow */
 }
+/* ==========================================
+   MOBILE & LAPTOP RESPONSIVE CORRECTIONS 
+   ========================================== */
+
+/* 1. Mobile me Text auto-scale aur look behtar karne ke liye */
+@media (max-width: 600px) {
+  h1 { font-size: clamp(32px, 8vw, 42px) !important; }
+  h2 { font-size: clamp(26px, 6vw, 32px) !important; }
+  .subtext { font-size: 14px !important; line-height: 1.4 !important; }
+  .container { padding: 25px 15px !important; width: 92% !important; }
+}
+
+/* 2. Candle Position Fix (Laptop me waisa hi rahega, Mobile me upar set hoga) */
+.number-candle {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  width: max-content;
+  z-index: 99;
+  pointer-events: none;
+  /* Laptop ke liye default top positioning */
+  top: -10px !important; 
+}
+
+/* Khasskar Mobile ke liye candle ko cake ke overflow se upar thakelne ke liye */
+@media (max-width: 600px) {
+  .number-candle {
+    top: -25px !important; /* Isse mobile me candle cake ke upar chali jayegi */
+  }
+  .num {
+    font-size: 42px !important; /* Mobile me candle ka size thoda chhota aur pyara dikhega */
+  }
+  .flame-wrapper {
+    top: -20px !important;
+  }
+}
+
+/* 3. Envelope Message Box Hide/Cut hone ka permanent ilaaj */
+.glass-box-full {
+  max-height: 380px !important; /* Ek fixed range tak hi box badhega */
+  overflow-y: auto !important;   /* Agar text zyada bada hoga toh box ke andar scrollbar aa jayega, cut nahi hoga */
+  padding: 20px !important;
+  margin-top: 15px !important;
+}
+
+#typingText {
+  white-space: pre-line !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  padding-bottom: 15px !important; /* Niche se thodi extra jagah taaki aakhri line safe rahe */
+}
+
+/* Custom Scrollbar envelop ke andar wale text ke liye (Optional par sundar dikhega) */
+.glass-box-full::-webkit-scrollbar {
+  width: 5px;
+}
+.glass-box-full::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
