@@ -33,8 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     intro.addEventListener("touchstart", startExperience, { once: true });
   }
 });
-
-// 🎨 Background gradient ko har 5 second me smoothly change karne ke liye
 function startAmbientBgShift() {
   const gradients = [
     "linear-gradient(135deg, #0f0c1b, #201335, #0f0c1b)",
@@ -50,15 +48,12 @@ function startAmbientBgShift() {
     document.body.style.background = gradients[gIndex];
   }, 5000);
 }
-
-// 👑 Screen par alag-alag jagah halka sa floating text watermark dikhane ke liye
 function startPremiumWatermarkEngine() {
   const customGreetings = [
     `${userName}🎂`,
     "Happy Birthday ✨",
     "Stay Blessed🌸 Dear",
     "Surprise Dear👑",
-    `${userName} ji🎉`
   ];
 
   watermarkInterval = setInterval(() => {
@@ -871,14 +866,14 @@ function toggleWishMessage(boxNumber) {
 
   if(boxNumber === 2) {
     if(cb2 && cb2.checked) {
-      board.innerText = "🚗 Planning mode activated! Chaahe kitni baar bhi cancel ho jaye, ek trip toh banti hai boss!";
+      board.innerText = "🚗 Planning mode activated! Chaahe kitni baar bhi cancel ho jaye, ek trip toh banti hai Dost!";
     } else {
-      board.innerText = "Check the boxes above to lock our future goals! ✨";
+      board.innerText = "Check the boxes above to lock our future goals!✨";
     }
   } 
   else if(boxNumber === 3) {
     if(cb3 && cb3.checked) {
-      board.innerText = "🍕 Treat Locked! Iska hisab rakh liya gaya hai website me, ab party deni hi padegi!";
+      board.innerText = "🍕Treat Locked! Iska hisab rakh liya gaya hai website me, ab party deni hi padegi!";
     } else {
       board.innerText = "Check the boxes above to lock our future goals! ✨";
     }
@@ -891,11 +886,11 @@ function triggerPinkyPromise() {
   
   if(btn && txt) {
     txt.style.display = "block";
-    btn.innerText = "🤝 Promise Locked Forever";
+    btn.innerText = "🤝Promise Locked Forever";
     btn.style.opacity = "0.7";
     btn.disabled = true;
     
-    showHint("❤️ Promise registered in the database!");
+    showHint("❤️Promise registered in the database!");
   }
 }
 
