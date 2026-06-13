@@ -866,7 +866,7 @@ function toggleWishMessage(boxNumber) {
 
   if(boxNumber === 2) {
     if(cb2 && cb2.checked) {
-      board.innerText = "🚗 Planning mode activated! Chaahe kitni baar bhi cancel ho jaye, ek trip toh banti hai Dost!";
+      board.innerText = "🚗Planning mode activated! Chaahe kitni baar bhi cancel ho jaye, ek trip toh banti hai Miitra!";
     } else {
       board.innerText = "Check the boxes above to lock our future goals!✨";
     }
